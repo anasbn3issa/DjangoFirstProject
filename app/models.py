@@ -14,7 +14,7 @@ def email_validator(email):
 class User(models.Model):
     first_name = models.CharField(verbose_name="Prénom", max_length=30)
     last_name = models.CharField(verbose_name="Nom", max_length=30)
-    email = models.EmailField(verbose_name="Email", null=False)
+    email = models.EmailField(verbose_name="Email", null=False,validators=[email_validator])
     def __str__(self):
         return self.first_name + " " + self.last_name
 
