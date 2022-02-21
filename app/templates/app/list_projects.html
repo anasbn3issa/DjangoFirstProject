@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table class="table">
+    <tr>
+        <td>name:</td>
+        <td>duration:</td>
+        <td>needs:</td>
+        <td>creator:</td>
+        <td>supervisor</td>
+    </tr>
+
+<ul>
+    {% for project in object_list %}
+    <tr>
+        <td>{{ project.project_name}}</td>
+        <td>{{ project.time_allocated }}</td>
+        <td>{{ project.needs}}</td>
+        <td>{{ project.creator}}</td>
+        <td>{{ project.supervisor}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</ul>
+{% endblock content %}
