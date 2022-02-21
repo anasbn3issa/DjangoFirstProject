@@ -11,3 +11,7 @@ def homePage(request):
 def list_students(request):
     list = Student.objects.all()
     return render(request, 'app/list_students.html', {'list_students': list})
+
+def detail_Student(request,student_id):
+    student = Student.objects.get(id=student_id) #get_objects_or_404(Student, id=student_id)
+    return render(request, 'app/detail_Student.html', {'student': student})
