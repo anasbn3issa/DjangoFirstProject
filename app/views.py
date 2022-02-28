@@ -28,50 +28,9 @@ class ProjectListView(ListView): #class based view
     template_name = 'app/list_projects.html'
     context_object_name = 'list_projects'
 
-def Add_Student(request):
-    if request.method == "POST":
-        firstName = request.POST.get("firstName")
-        lastName = request.POST.get("lastName")
-        email = request.POST.get("email")
-        Student.objects.create(
-            first_name = firstName,
-            last_name = lastName,
-            email = email
-        )
-        return redirect('student_display')
-    return render(request,'app/add_student.html')
-
-def add_Student_Form(request):
-    form = StudentForm()
-    if request.method == "POST" :
-        form = StudentForm(request.POST)
-        if form.is_valid():
-            Student.objects.create(
-                first_name = form.cleaned_data['first_name'],
-                last_name = form.cleaned_data['last_name'],
-                email = form.cleaned_data['first_name']
-            )
-            return redirect('student_display')
-    return render(
-    request,
-    'app/add_student_form.html',
-    {'form': form}
-)
-
-def add_Student_ModelForm(request):
-    form = StudentModelForm()
-    if request.method == "POST" :
-        form = StudentModelForm(request.POST)
-        if form.is_valid():
-            student = form.save()
-            return redirect('Student_list')
-    return render(
-    request,
-    'app/add_student_form.html',
-    {'form': form}
-)
-        
 class StudentCreateView(CreateView):
     template_name = 'app/add_student_form.html'
     model = Student
     form_class = StudentModelForm
+    def get_success_url(self):
+        return reverse("student_display")
