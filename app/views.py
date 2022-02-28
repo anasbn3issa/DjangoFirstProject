@@ -1,8 +1,9 @@
-from urllib import request
+from django.urls import reverse
 from django.views.generic import ListView
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from app.forms import StudentForm, StudentModelForm
+from django.views.generic.edit import CreateView
 
 from app.models import Project, Student
 # Create your views here.
@@ -70,3 +71,7 @@ def add_Student_ModelForm(request):
     {'form': form}
 )
         
+class StudentCreateView(CreateView):
+    template_name = 'app/add_student_form.html'
+    model = Student
+    form_class = StudentModelForm

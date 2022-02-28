@@ -1,4 +1,4 @@
-from ast import Str
+from django.urls import reverse
 from django.db import models
 from django.core.validators import MinValueValidator,MaxValueValidator
 from django.core.exceptions import ValidationError
@@ -17,6 +17,9 @@ class User(models.Model):
     email = models.EmailField(verbose_name="Email", null=False,validators=[email_validator])
     def __str__(self):
         return self.first_name + " " + self.last_name
+    def get_absolute_url(self):
+        return reverse("student_display")
+    
 
 class Student(User):
     pass
