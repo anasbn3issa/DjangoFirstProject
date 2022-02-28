@@ -1,5 +1,7 @@
 from django import forms
 
+from app.models import Student
+
 class StudentForm(forms.Form):
     first_name = forms.CharField(
         label="Prenom ",
@@ -18,3 +20,10 @@ class StudentForm(forms.Form):
         widget=forms.TextInput(attrs={'placeholder': 'foulen.benfoulen@mail.end'})
     )
     
+class StudentModelForm(forms.ModelForm):
+    
+    class Meta:
+        model = Student
+        fields = '__all__'
+        
+

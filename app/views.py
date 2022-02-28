@@ -2,7 +2,7 @@ from urllib import request
 from django.views.generic import ListView
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from app.forms import StudentForm
+from app.forms import StudentForm, StudentModelForm
 
 from app.models import Project, Student
 # Create your views here.
@@ -56,3 +56,17 @@ def add_Student_Form(request):
     'app/add_student_form.html',
     {'form': form}
 )
+
+def add_Student_ModelForm(request):
+    form = StudentModelForm()
+    if request.method == "POST" :
+        form = StudentModelForm(request.POST)
+        if form.is_valid():
+            student = form.save()
+            return redirect('Student_list')
+    return render(
+    request,
+    'app/add_student_form.html',
+    {'form': form}
+)
+        
