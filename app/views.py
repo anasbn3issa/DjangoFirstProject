@@ -1,11 +1,11 @@
 from django.urls import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView,UpdateView
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from app.forms import StudentForm, StudentModelForm
 from django.views.generic.edit import CreateView
 
-from app.models import Project, Student
+from app.models import Coach, Project, Student
 # Create your views here.
 
 def homePage(request):
@@ -34,3 +34,8 @@ class StudentCreateView(CreateView):
     form_class = StudentModelForm
     def get_success_url(self):
         return reverse("student_display")
+
+class StudentUpdateView(UpdateView):
+    template_name = 'app/add_student_form.html'
+    model = Student
+    form_class = StudentModelForm

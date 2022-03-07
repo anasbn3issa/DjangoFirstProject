@@ -17,6 +17,9 @@ class User(models.Model):
     email = models.EmailField(verbose_name="Email", null=False,validators=[email_validator])
     def __str__(self):
         return self.first_name + " " + self.last_name
+    def get_absolute_url(self):
+        return reverse("student_display")
+    
     
     
 

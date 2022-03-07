@@ -1,2 +1,7 @@
-
-<li> {{ student.first_name }}</li>
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <li>{{ student.f+-irst_name }}</li>
+  <li>{{ student.last_name }}</li>
+  <li>{{ student.email }}</li>
+</div>
+{% endblock %}
