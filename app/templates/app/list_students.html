@@ -4,6 +4,7 @@
 <ul>
     {% for student in list_students %}
     <a href="{% url 'student_detail' student.id %}"><li> {{ student.first_name }}</li></a>
+    <button><a href="{% url 'delete_student' student.id %}">Delete</a></button>
     {% endfor %}
 </ul>
 {% endblock content %}

@@ -132,3 +132,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 crispy_forms_tags = 'bootstrap4'
+
+
+LOGIN_REDIRECT_URL = 'student_display'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'
